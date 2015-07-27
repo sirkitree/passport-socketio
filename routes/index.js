@@ -11,9 +11,9 @@ module.exports = function(express, app, passport) {
   // renders index within public by default
   router.use(express.static('public'))
 
-  // router.get('/', function(req, res) {
-  //   res.sendFile(path.join(__dirname, '../public/index.html'))
-  // })
+  router.get('/authorized', function(req, res) {
+    res.sendFile(path.join(__dirname, '../public/authorized.html'))
+  })
 
   router.get('/logout', function(req, res) {
     req.logout()
@@ -32,7 +32,7 @@ module.exports = function(express, app, passport) {
       req.logIn(user, function(err) {
         if (err) { return next(err) }
         console.log('LOGGING IN')
-        return res.redirect('/')
+        return res.redirect('/authorized')
       })
     })(req, res, next)
   })
