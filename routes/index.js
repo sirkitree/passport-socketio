@@ -24,15 +24,18 @@ module.exports = function(express, app, passport) {
     res.sendFile(path.join(__dirname, '../public/login.html'))
   })
 
-  router.post('/login',
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/login'
-    }),
-    function(req, res) {
-      res.render('authorized.html')
-    }
-  )
+  router.post('/login', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      console.log(arguments)
+      if (err) { return next(err) }
+      if (!user) { return res.redirect('/login') }
+      req.logIn(user, function(err) {
+        if (err) { return next(err) }
+        console.log('LOGGING IN')
+        return res.redirect('/')
+      })
+    })(req, res, next)
+  })
 
   // routes
   app.use('/', router)

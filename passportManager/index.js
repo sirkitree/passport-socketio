@@ -12,7 +12,6 @@ module.exports = function(passport) {
   passport.use(new LocalStrategy(
     function (username, password, done) {
       if ((username === 'admin') && (password === 'bitner')) {
-        console.log("user login...");
         return done(null, {
             username: username,
             password: password

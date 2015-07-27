@@ -6,10 +6,10 @@ var express = require('express')
   , app = express()
   , redisClient = require('redis').createClient()
   , server = require('http').createServer(app)
-  , router = require('./routes')(express, app, passport)
   , passMan = require('./passportManager')(passport)
   , appMan = require('./applicationManager')(app, passport, session)
   , sockMan = require('./socketioManager')(io, server, passport)
+  , router = require('./routes')(express, app, passport)
 
 server.listen(3001, function() {
   console.log('Server listening on port 3001')

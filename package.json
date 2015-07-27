@@ -9,6 +9,7 @@
   "author": "Jerad Bitner",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "passport": "^0.2.2",
