@@ -1,9 +1,12 @@
 # passport-socketio
 
-working express/passport with a local strategy (I'm learning)
+Working express/passport/socket.io with a local strategy (I'm learning)
 
-and no I don't use semicolons... deal with it 
+* Express
+* Passport with Mongodb session storage
+* passport.socketio integration
+
+I don't use semicolons... [deal](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) [with](http://inimino.org/~inimino/blog/javascript_semicolons) [it](https://github.com/maxogden/messages/issues/18)
 
 @todo:
-* integrate redis or mongodb session storage
 * integrate github passport strategy
