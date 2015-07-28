@@ -23,6 +23,7 @@ module.exports = function(io, server, passport, sessionStore) {
   }))
 
   socketio.on('connection', function(socket) {
+    // connection happens in /authorized
     console.log('socket named %s connected', socket.nsp.name)
     // join
     // emit

@@ -11,6 +11,6 @@ var express = require('express')
   , sockMan = require('./socketioManager')(io, server, passport, mongoStore)
   , router = require('./routes')(express, app, passport)
 
-server.listen(3001, function() {
-  console.log('Server listening on port 3001')
+server.listen(8181, function() {
+  console.log('Server listening on port 8181')
 })
