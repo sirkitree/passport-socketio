@@ -1,6 +1,6 @@
 # passport-socketio
 
-Working express/passport/socket.io with a local strategy (I'm learning)
+Working express/passport/socket.io with a github strategy (I'm learning)
 
 * Express
 * Passport with Mongodb session storage
