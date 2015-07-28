@@ -2,8 +2,12 @@
 <html>
 <head>
   <title>AUTHORIZED</title>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 AUTHORIZED
+<script type="text/javascript">
+  var socket = io.connect('http://' + location.host);
+</script>
 </body>
 </html>

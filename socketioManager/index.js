@@ -1,8 +1,29 @@
-module.exports = function(io, server, passport) {
+module.exports = function(io, server, passport, sessionStore) {
   var socketio = io.listen(server)
+    , passSock = require('passport.socketio')
 
-  socketio.set('authorization', passport.authorize({ /* settings */}))
-  socketio.sockets.on('connection', function(socket) {
+  var authSuccess = function(data, accept) {
+    console.log('success connect socket.io')
+    accept()
+  }
+
+  var authFail = function(data, message, err, accept) {
+    console.log('fail connect socket.io', message)
+    if (err) accept(new Error(message))
+  }
+
+  socketio.use(passSock.authorize({
+    cookieParser: require('cookie-parser'),
+    key: 'connect.sid',
+    secret: 'whatever44',
+    store: sessionStore,
+    success: authSuccess,
+    fail: authFail,
+    passport: passport // see https://github.com/jfromaniello/passport.socketio/issues/61
+  }))
+
+  socketio.on('connection', function(socket) {
+    console.log('socket named %s connected', socket.nsp.name)
     // join
     // emit
     // set
